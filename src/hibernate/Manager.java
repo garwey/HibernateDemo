@@ -10,10 +10,10 @@ import org.hibernate.service.ServiceRegistryBuilder;
 public class Manager {
 	public static void main(String[] args) {
 		// 实例化Configuration
-		// Configuration conf = new Configuration().configure();
-		Configuration conf = new Configuration()
-			// 调用addAnnotatedClass()方法添加持久化类
-			.addAnnotatedClass(hibernate.News.class);
+		 Configuration conf = new Configuration().configure();
+		// Configuration conf = new Configuration()
+		// // 调用addAnnotatedClass()方法添加持久化类
+		// .addAnnotatedClass(hibernate.News.class);
 
 		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
 				.applySettings(conf.getProperties()).buildServiceRegistry();
