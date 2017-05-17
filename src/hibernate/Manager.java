@@ -2,13 +2,11 @@ package hibernate;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 
 public class Manager {
 	public static void main(String[] args) throws Exception {
