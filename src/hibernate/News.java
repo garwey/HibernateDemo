@@ -3,6 +3,7 @@ package hibernate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -46,20 +47,16 @@ public class News {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	@ElementCollection(targetClass = String.class)
-	@CollectionTable(name = "score_inf", joinColumns = @JoinColumn(name = "news_id"))
+	@CollectionTable(name = "score_inf", joinColumns = @JoinColumn(name = "news_id") )
 	@Column(name = "mark")
 	@MapKeyColumn(name = "subject_name")
 	@MapKeyClass(Integer.class)
 	private Map<Integer, String> scores = new HashMap<>();
-	private Name name;
-
-	public Name getName() {
-		return name;
-	}
-
-	public void setName(Name name) {
-		this.name = name;
-	}
+	@ElementCollection(targetClass = User.class)
+	@CollectionTable(name = "department_users", joinColumns = @JoinColumn(name = "news_id") )
+	@Column(name = "users")
+	// @Cascade(CascadeType.ALL)
+	private Set<User> users;
 
 	public Map<Integer, String> getScores() {
 		return scores;
@@ -115,5 +112,13 @@ public class News {
 
 	public void setPic(byte[] pic) {
 		this.pic = pic;
+	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 }

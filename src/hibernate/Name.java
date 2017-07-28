@@ -1,18 +1,13 @@
 package hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import org.hibernate.annotations.Parent;
-
-@Embeddable
-public class Name {
-	@Column(name = "News_firstname")
+//@Embeddable
+public class Name implements java.io.Serializable {
+	// @Column(name = "News_firstname")
 	private String first;
-	@Column(name = "News_lastname")
+	// @Column(name = "News_lastname")
 	private String last;
-	@Parent
-	// ①
-	private News owner;
+	// @Parent
+	private Person owner;
 
 	// 无参数的构造器
 	public Name() {
@@ -40,12 +35,11 @@ public class Name {
 		this.last = last;
 	}
 
-	public void setOwner(News owner) {
+	public void setOwner(Person owner) {
 		this.owner = owner;
 	}
 
-	public News getOwner() {
+	public Person getOwner() {
 		return this.owner;
 	}
-
 }

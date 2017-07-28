@@ -6,14 +6,23 @@
 <hibernate-configuration>
 
 	<session-factory>
+	
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="connection.url">jdbc:mysql://localhost:3306/test</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="myeclipse.connection.profile">mysql</property>
+		<!-- 根据需要自动创建数据库 -->
 		<property name="hbm2ddl.auto">update</property>
+		<!-- 显示Hibernate持久化操作所生成的SQL -->
+		<property name="show_sql">true</property>
+		<!-- 将SQL脚本进行格式化后再输出 -->
+		<property name="hibernate.format_sql">true</property>
+		<!-- 罗列所有持久化类的类名 -->
+		<mapping class="hibernate.User" />
 		<mapping class="hibernate.News" />
+		<mapping resource="hibernate/Person.hbm.xml" />
 
 	</session-factory>
 
